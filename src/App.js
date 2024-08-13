@@ -1,23 +1,75 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import "./App.css"
+
+
 
 function App() {
+  const [countries, setCountries] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
+
+  useEffect(() => {
+    // Fetch country data
+    axios.get('https://restcountries.com/v3.1/all')
+      .then(response => {
+        setCountries(response.data);
+      })
+      .catch(error => {
+        console.error('Error fetching the country data:', error);
+      });
+  }, []);
+
+  const handleSearch = (event) => {
+    setSearchTerm(event.target.value.toLowerCase());
+  };
+
+  const filteredCountries = countries.filter(country =>
+    country.name.common.toLowerCase().includes(searchTerm)
+  );
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+     
+      <input 
+        type="text"
+        placeholder="Search for countries..."
+        value={searchTerm}
+        onChange={handleSearch}
+      />
+     {/* <div style={{
+        display:"flex",
+        flexWrap:"wrap",
+        alignItems:"center",
+        justifyContent:"center",
+        height:"100vh",
+    }}>        */}
+     <div className="countryCard">
+        {filteredCountries.map(country => (
+          // <div key={country.cca3} className='country-item ' > 
+              <div key={country.cca3}     style={{
+                display:"flex",
+                justifyContent:"center",
+                alignItems:"center",
+                flexDirection:"column",
+                padding:"10px",
+                margin:"10px",
+                border:"1px solid black",
+                borderRadius:"8px",
+                width:"200px",
+                height:"200px"
+            }}>
+          <img 
+              src={country.flags.png}
+              alt={country.flags.alt} 
+              style={{width:"100px",height:"100px"}}
+             
+             />
+            
+            {country.name.common}
+           
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
