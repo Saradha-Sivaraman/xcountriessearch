@@ -10,7 +10,7 @@ input {
   justify-content: center;
 }
 
-.countryCards {
+.countryCard {
   display: flex;
   flex-wrap:wrap;
   justify-content: center;
@@ -30,7 +30,7 @@ input {
 img {
   display: block;
 }
-
+/* 
 .countryCard {
   display:"flex";
   justify-content:"center";
@@ -44,4 +44,4 @@ img {
   height:"200px"
  
 }
-
+ */

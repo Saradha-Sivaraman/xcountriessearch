@@ -59,7 +59,7 @@ function App() {
     }}>        */}
 
 {isValid && (
-     <div className="countryCards">
+     <div className="countryCard">
         {filteredCountries.map(country => (
           // <div key={country.cca3} className='country-item ' > 
               <div  className="countryCard" key={country.cca3}     style={{
