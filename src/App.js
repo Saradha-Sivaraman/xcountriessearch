@@ -26,12 +26,7 @@ function App() {
     const value = event.target.value.toLowerCase();
     setInputValue(value);
     // Check for validity; for example, check if the input is not empty
-    const filteredCountries = countries.filter(country =>
-      setIsValid(country.name.common.toLowerCase().includes(searchTerm))
-     
-     
-  
-    );
+
    
   };
 
