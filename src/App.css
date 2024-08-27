@@ -10,10 +10,11 @@ input {
   justify-content: center;
 }
 
-.countryCard {
+.countryCards {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap:wrap;
   justify-content: center;
+  
 }
 
 
@@ -29,3 +30,18 @@ input {
 img {
   display: block;
 }
+
+.countryCard {
+  display:"flex";
+  justify-content:"center";
+  align-items:"center";
+  flex-direction:"column";
+  padding:"10px";
+  margin:"10px";
+  border:"1px solid black";
+  border-radius:"8px";
+  width:"200px";
+  height:"200px"
+ 
+}
+

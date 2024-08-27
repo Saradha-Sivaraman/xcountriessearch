@@ -4,10 +4,12 @@ import "./App.css"
 
 
 
+
 function App() {
   const [countries, setCountries] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
-
+  const [isValid, setIsValid] = useState(true);
+  const [inputValue, setInputValue] = useState('');
   useEffect(() => {
     // Fetch country data
     axios.get('https://restcountries.com/v3.1/all')
@@ -21,10 +23,22 @@ function App() {
 
   const handleSearch = (event) => {
     setSearchTerm(event.target.value.toLowerCase());
+    const value = event.target.value.toLowerCase();
+    setInputValue(value);
+    // Check for validity; for example, check if the input is not empty
+    const filteredCountries = countries.filter(country =>
+      setIsValid(country.name.common.toLowerCase().includes(searchTerm))
+     
+     
+  
+    );
+   
   };
 
   const filteredCountries = countries.filter(country =>
     country.name.common.toLowerCase().includes(searchTerm)
+   
+
   );
 
   return (
@@ -43,10 +57,12 @@ function App() {
         justifyContent:"center",
         height:"100vh",
     }}>        */}
-     <div className="countryCard">
+
+{isValid && (
+     <div className="countryCards">
         {filteredCountries.map(country => (
           // <div key={country.cca3} className='country-item ' > 
-              <div key={country.cca3}     style={{
+              <div  className="countryCard" key={country.cca3}     style={{
                 display:"flex",
                 justifyContent:"center",
                 alignItems:"center",
@@ -69,7 +85,9 @@ function App() {
            
           </div>
         ))}
+        
       </div>
+       )}
     </div>
   );
 }
