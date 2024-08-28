@@ -5,6 +5,7 @@ import "./App.css"
 function App() {
   const [countries, setCountries] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
+  const [isValid, setisValid] = useState(true);
  
   useEffect(() => {
     // Fetch country data
@@ -24,6 +25,7 @@ function App() {
 
   const filteredCountries = countries.filter(country =>
     country.name.common.toLowerCase().includes(searchTerm)
+    
   
 
   );
@@ -37,7 +39,7 @@ function App() {
         value={searchTerm}
         onChange={handleSearch}
       />
-    
+  {filteredCountries.length > 0 ? (
  <div className="countryCard"> 
         {filteredCountries.map(country => (
 
@@ -64,7 +66,9 @@ function App() {
         ))}
          </div>
         
-        
+      ) : (
+        <div>No countries found</div>
+      )}
       
     
     </div>
