@@ -41,8 +41,8 @@ function App() {
         />
        
       
-      
- <div className="countryCard"> 
+       {filteredCountries && (
+ <div className="country"> 
         {filteredCountries.map(country => (
 
               <div  className="countryCard" key={country.cca3}     style={{
@@ -68,7 +68,7 @@ function App() {
         ))}
          </div>
        
-      
+       )}
    
     
     </div>
