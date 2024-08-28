@@ -5,8 +5,7 @@ import "./App.css"
 function App() {
   const [countries, setCountries] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
-  const [isValid, setisValid] = useState(true);
- 
+
   useEffect(() => {
     // Fetch country data
     axios.get('https://restcountries.com/v3.1/all')
@@ -21,11 +20,14 @@ function App() {
   const handleSearch = (event) => {
     setSearchTerm(event.target.value.toLowerCase());
     
+    
   };
 
   const filteredCountries = countries.filter(country =>
     country.name.common.toLowerCase().includes(searchTerm)
+    
 );
+
 
   return (
     <div>
@@ -35,8 +37,11 @@ function App() {
         placeholder="Search for countries..."
         value={searchTerm}
         onChange={handleSearch}
-      />
- {filteredCountries.length > 0 ? (
+           
+        />
+       
+      
+      
  <div className="countryCard"> 
         {filteredCountries.map(country => (
 
@@ -62,11 +67,9 @@ function App() {
           </div>
         ))}
          </div>
-        
-      ) : (
-        <div className="countryCard"  style={{
-          display:"none"}}>No countries found</div>
-      )}
+       
+      
+   
     
     </div>
   );
