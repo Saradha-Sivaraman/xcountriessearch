@@ -67,7 +67,7 @@ function App() {
          </div>
         
       ) : (
-        <div>No countries found</div>
+        <div className="countryCard">No countries found</div>
       )}
       
     
