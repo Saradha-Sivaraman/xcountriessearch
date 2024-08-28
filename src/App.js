@@ -61,7 +61,7 @@ function App() {
              
              />
             
-            {country.name.common}
+           <p> {country.name.common} </p>
            
          
           </div>
