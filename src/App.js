@@ -25,10 +25,7 @@ function App() {
 
   const filteredCountries = countries.filter(country =>
     country.name.common.toLowerCase().includes(searchTerm)
-    
-  
-
-  );
+);
 
   return (
     <div>
@@ -39,7 +36,7 @@ function App() {
         value={searchTerm}
         onChange={handleSearch}
       />
-  {filteredCountries.length > 0 ? (
+ {filteredCountries.length > 0 ? (
  <div className="countryCard"> 
         {filteredCountries.map(country => (
 
@@ -67,9 +64,9 @@ function App() {
          </div>
         
       ) : (
-        <div className="countryCard">No countries found</div>
+        <div className="countryCard"  style={{
+          display:"none"}}>No countries found</div>
       )}
-      
     
     </div>
   );
